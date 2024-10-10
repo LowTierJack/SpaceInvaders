@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     private Invaders invaders;
     private MysteryShip mysteryShip;
     private Bunker[] bunkers;
+    public CameraShake cameraShake;
 
     //Används ej just nu, men ni kan använda de senare
     public int score { get; private set; } = 0;
@@ -53,6 +54,11 @@ public class GameManager : MonoBehaviour
         {
             NewGame();
         }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            StartCoroutine(cameraShake.Shake(0.15f, 0.1f));
+        }
     }
 
     private void NewGame()
@@ -91,12 +97,12 @@ public class GameManager : MonoBehaviour
 
     private void SetScore(int score)
     {
-        
+
     }
 
     private void SetLives(int lives)
     {
-       
+
     }
 
     public void OnPlayerKilled(Player player)
@@ -110,7 +116,7 @@ public class GameManager : MonoBehaviour
     {
         invader.gameObject.SetActive(false);
 
-       
+
 
         if (invaders.GetInvaderCount() == 0)
         {
