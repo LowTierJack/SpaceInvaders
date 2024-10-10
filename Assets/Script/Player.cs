@@ -27,9 +27,10 @@ public class Player : MonoBehaviour
 
         transform.position = position;
 
-        if (Input.GetKeyDown(KeyCode.Space) && laser == null)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            laser = Instantiate(laserPrefab, transform.position, Quaternion.identity);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up);
+            Debug.DrawRay(transform.position, Vector2.up, Color.green);
         }
     }
 
