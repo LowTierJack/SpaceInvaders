@@ -10,6 +10,17 @@ public class Player : MonoBehaviour
     public Laser laserPrefab;
     Laser laser;
     float speed = 5f;
+    Freeze _freezer;
+
+    private void Start()
+    {
+
+        GameObject mgr = GameObject.FindWithTag("Manager");
+        if (mgr)
+        {
+            _freezer = mgr.GetComponent<Freeze>();
+        }
+    }
 
     // Update is called once per frame
     void Update()
@@ -29,8 +40,15 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up, Mathf.Infinity, 1 << 7);
             Debug.DrawRay(transform.position, Vector2.up, Color.green);
+
+            // if it hits something
+            if (hit.collider != null)
+            {
+                _freezer.Freeza();
+                Destroy(hit.transform.gameObject);
+            }
         }
     }
 

@@ -531,8 +531,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67dd7796d16bce94b895d73c1ef771e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  cycleTime: 5
 --- !u!61 &864216850
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -725,6 +723,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e64a8cd85da7db4bb6f817136810388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraShake: {fileID: 0}
 --- !u!4 &972938369
 Transform:
   m_ObjectHideFlags: 0
@@ -883,6 +882,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b37b360f63f3eb247b6831e86505ddb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1607055010
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1607055012}
+  - component: {fileID: 1607055011}
+  m_Layer: 0
+  m_Name: FreezeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1607055011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607055010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1480762098688874a9d95b775195b5b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 0.1
+--- !u!4 &1607055012
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607055010}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.1034207, y: -1.5926809, z: -0.05357191}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1737979609
 GameObject:
   m_ObjectHideFlags: 0
@@ -1132,7 +1176,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laserPrefab: {fileID: 598745509683378831, guid: 98a41f42675e8c844a294a52de7b711f, type: 3}
-  speed: 5
 --- !u!1 &1862395652
 GameObject:
   m_ObjectHideFlags: 0
@@ -1368,3 +1411,4 @@ SceneRoots:
   - {fileID: 1927456539}
   - {fileID: 918047703}
   - {fileID: 864216852}
+  - {fileID: 1607055012}
