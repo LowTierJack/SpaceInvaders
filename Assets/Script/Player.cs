@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
             if (hit.collider != null)
             {
                 _freezer.Freeza();
-                Destroy(hit.transform.gameObject);
+                GameManager.Instance.OnInvaderKilled(hit.transform);
             }
         }
     }

@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     private MysteryShip mysteryShip;
     private Bunker[] bunkers;
     public CameraShake cameraShake;
+    [SerializeField] ParticleSystem john_Doe;
 
     //Används ej just nu, men ni kan använda de senare
     public int score { get; private set; } = 0;
@@ -112,11 +113,16 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void OnInvaderKilled(Invader invader)
+    public void OnInvaderKilled(Transform invader)
     {
         invader.gameObject.SetActive(false);
 
+        Vector2 invPos = invader.gameObject.transform.position;
 
+        var emitParams = new ParticleSystem.EmitParams();
+        emitParams.applyShapeToPosition = true;
+        emitParams.position = invPos;
+        john_Doe.Emit(emitParams, 30);
 
         if (invaders.GetInvaderCount() == 0)
         {
