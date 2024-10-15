@@ -9,7 +9,7 @@ public class CameraShake : MonoBehaviour
 
 
 
-    public IEnumerator Shake(float shakeTime, float amplitude)
+    /*public IEnumerator Shake(float shakeTime, float amplitude)
     {
         Vector3 originalPosition = transform.localPosition;
 
@@ -29,7 +29,7 @@ public class CameraShake : MonoBehaviour
         transform.localPosition = originalPosition;
 
 
-    }
+    }*/
 
 
 }
