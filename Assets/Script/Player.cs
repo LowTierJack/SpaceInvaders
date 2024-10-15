@@ -42,7 +42,19 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Railgun.Emit(Vector3.zero, Vector3.up, 0.2, 2, Color.yellow);
+
+            
+
+            var emitParams = new ParticleSystem.EmitParams();
+            emitParams.applyShapeToPosition = false;
+            emitParams.position = transform.position + new Vector3(0,10,0);
+
+
+
+           
+            system.Emit(emitParams, 1);
+
+
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up, Mathf.Infinity, 1 << 7);
             Debug.DrawRay(transform.position, Vector2.up, Color.green);
 
