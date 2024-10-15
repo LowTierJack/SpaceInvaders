@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     Laser laser;
     float speed = 5f;
     Freeze _freezer;
+    public ParticleSystem system;
 
     private void Start()
     {
@@ -26,6 +27,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         Vector3 position = transform.position;
+        ParticleSystem ps = GetComponent<ParticleSystem>();
 
         if (Input.GetKey(KeyCode.A))
         {
@@ -40,6 +42,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            Railgun.Emit(Vector3.zero, Vector3.up, 0.2, 2, Color.yellow);
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up, Mathf.Infinity, 1 << 7);
             Debug.DrawRay(transform.position, Vector2.up, Color.green);
 
