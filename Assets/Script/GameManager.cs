@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            StartCoroutine(cameraShake.Shake(0.15f, 0.1f));
+            StartCoroutine(cameraShake.Shake(0.15f, 0.5f));
         }
     }
 
