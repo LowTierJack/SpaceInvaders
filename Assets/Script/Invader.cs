@@ -42,11 +42,8 @@ public class Invader : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.layer == LayerMask.NameToLayer("Laser"))
-        {
-            GameManager.Instance.OnInvaderKilled(this);
-        }
-        else if(collision.gameObject.layer == LayerMask.NameToLayer("Boundary")) //nått nedre kanten
+
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Boundary")) //nått nedre kanten
         {
             GameManager.Instance.OnBoundaryReached();
         }
