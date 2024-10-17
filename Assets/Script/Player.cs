@@ -46,10 +46,8 @@ public class Player : MonoBehaviour
             
 
             var emitParams = new ParticleSystem.EmitParams();
-            emitParams.applyShapeToPosition = false;
-            emitParams.position = transform.position + new Vector3(0,10,0);
-
-
+            emitParams.applyShapeToPosition = true;
+            emitParams.position = transform.position + new Vector3(0,15,0);
 
            
             system.Emit(emitParams, 1);
