@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     float speed = 5f;
     Freeze _freezer;
     public ParticleSystem system;
+    [SerializeField] ParticleSystem gunEffect;
 
     private void Start()
     {
@@ -43,7 +44,13 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
 
-            
+            Vector2 playerPos = transform.position;
+
+            var emitParamsGun = new ParticleSystem.EmitParams();
+            emitParamsGun.applyShapeToPosition = true;
+            emitParamsGun.position = playerPos;
+            gunEffect.Emit(emitParamsGun, 30);
+
 
             var emitParams = new ParticleSystem.EmitParams();
             emitParams.applyShapeToPosition = true;
