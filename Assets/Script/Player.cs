@@ -67,8 +67,11 @@ public class Player : MonoBehaviour
             for (int i = 0; i < hits.Length; i++)
             {
                 RaycastHit hit = hits[i];
-                _freezer.Freeza();
+
+                if (hit.collider != null)
+                    _freezer.Freeza();
                 GameManager.Instance.OnInvaderKilled(hit.transform);
+                
             }
 
                 // if it hits something
