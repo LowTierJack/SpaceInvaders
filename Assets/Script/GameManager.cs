@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     private Player player;
-    private Invaders invaders;
+    public Invaders invaders;
     private MysteryShip mysteryShip;
     private Bunker[] bunkers;
     public CameraShake cameraShake;
