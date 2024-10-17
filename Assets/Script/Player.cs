@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
             var emitParamsGun = new ParticleSystem.EmitParams();
             emitParamsGun.applyShapeToPosition = true;
             emitParamsGun.position = playerPos;
-            gunEffect.Emit(emitParamsGun, 30);
+            gunEffect.Emit(emitParamsGun, 50);
 
 
             var emitParams = new ParticleSystem.EmitParams();
