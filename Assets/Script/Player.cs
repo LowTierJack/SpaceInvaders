@@ -61,14 +61,23 @@ public class Player : MonoBehaviour
             system.Emit(emitParams, 1);
 
 
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up, Mathf.Infinity, 1 << 7);
-            Debug.DrawRay(transform.position, Vector2.up, Color.green);
+            StartCoroutine(ShootLaser());
+        }
+    }
 
-            // if it hits something
+    private IEnumerator ShootLaser()
+    {
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, Vector2.up, Mathf.Infinity, 1 << 7);
+        Debug.DrawRay(transform.position, Vector2.up, Color.green);
+
+        // if it hits something
+        foreach (RaycastHit2D hit in hits)
+        {
             if (hit.collider != null)
             {
                 _freezer.Freeza();
                 GameManager.Instance.OnInvaderKilled(hit.transform);
+                yield return new WaitForSeconds(0.02f);
             }
         }
     }
