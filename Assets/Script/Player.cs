@@ -60,16 +60,24 @@ public class Player : MonoBehaviour
            
             system.Emit(emitParams, 1);
 
-
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up, Mathf.Infinity, 1 << 7);
+            RaycastHit[] hits;
+            hits = Physics.RaycastAll(transform.position, Vector2.up, Mathf.Infinity, 1 << 7);
             Debug.DrawRay(transform.position, Vector2.up, Color.green);
 
-            // if it hits something
-            if (hit.collider != null)
+            for (int i = 0; i < hits.Length; i++)
             {
+                RaycastHit hit = hits[i];
                 _freezer.Freeza();
                 GameManager.Instance.OnInvaderKilled(hit.transform);
             }
+
+                // if it hits something
+               /* if (hits.collider != null)
+            {
+                _freezer.Freeza();
+                GameManager.Instance.OnInvaderKilled(hit.transform);
+
+            }*/
         }
     }
 
