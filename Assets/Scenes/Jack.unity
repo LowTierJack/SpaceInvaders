@@ -384,7 +384,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 19dec334b4389dd4396d11c7fc9f3645, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 10a453c387ec72a4db8d76db5cd8a53d, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.554
   m_Pitch: 1
@@ -5797,7 +5797,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 605687854}
   updateStep: 0.01
-  sampleDataLength: 2048
+  sampleDataLength: 4096
   clipLoudness: 0
   cube: {fileID: 1166787253}
   sizeFactor: 100
