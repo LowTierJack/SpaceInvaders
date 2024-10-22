@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 
 
@@ -13,6 +14,9 @@ public class Player : MonoBehaviour
     Freeze _freezer;
     public ParticleSystem system;
     [SerializeField] ParticleSystem gunEffect;
+    float coolDownTime;
+    [SerializeField] float coolDownAmount;
+    public CameraShake cameraShake;
 
     private void Start()
     {
@@ -41,9 +45,15 @@ public class Player : MonoBehaviour
 
         transform.position = position;
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (coolDownTime > 0) 
+        {
+            coolDownTime -= Time.deltaTime;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && coolDownTime <= 0)
         {
 
+            coolDownTime = coolDownAmount;
             Vector2 playerPos = transform.position;
 
             var emitParamsGun = new ParticleSystem.EmitParams();
@@ -55,13 +65,13 @@ public class Player : MonoBehaviour
 
             var emitParams = new ParticleSystem.EmitParams();
             emitParams.applyShapeToPosition = true;
-            emitParams.position = transform.position + new Vector3(0,15,0);
+            emitParams.position = transform.position + new Vector3(0, 15, 0);
 
-           
+
             system.Emit(emitParams, 1);
 
-
             StartCoroutine(ShootLaser());
+            StartCoroutine(cameraShake.Shake(0.30f, 0.8f));
         }
     }
 
@@ -81,6 +91,7 @@ public class Player : MonoBehaviour
             }
         }
     }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
