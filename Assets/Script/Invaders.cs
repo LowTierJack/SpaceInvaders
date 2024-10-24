@@ -83,7 +83,7 @@ public class Invaders : MonoBehaviour
             if (rand < 0.2)
             {
                 Instantiate(missilePrefab, invader.position, Quaternion.identity);
-                break;
+               
             }
         }
        
