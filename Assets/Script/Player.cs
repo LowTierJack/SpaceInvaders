@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
         lr = GetComponent<LineRenderer>();
         shootPoint = transform.GetChild(0).gameObject;
         lr.positionCount = 2;
+        
 
         GameObject mgr = GameObject.FindWithTag("Manager");
         if (mgr)
