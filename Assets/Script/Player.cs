@@ -19,11 +19,14 @@ public class Player : MonoBehaviour
     float coolDownTime;
     [SerializeField] float coolDownAmount;
     public CameraShake cameraShake;
+    private LineRenderer lr;
+    private GameObject shootPoint;
 
     private void Start()
     {
-
-        
+        lr = GetComponent<LineRenderer>();
+        shootPoint = transform.GetChild(0).gameObject;
+        lr.positionCount = 2;
 
         GameObject mgr = GameObject.FindWithTag("Manager");
         if (mgr)
@@ -37,7 +40,8 @@ public class Player : MonoBehaviour
     {
         Vector3 position = transform.position;
         ParticleSystem ps = GetComponent<ParticleSystem>();
-
+        lr.SetPosition(0, shootPoint.transform.position);
+        lr.SetPosition(1, shootPoint.transform.position + new Vector3(0, 30, 0));
         if (Input.GetKey(KeyCode.A))
         {
             position.x -= speed * Time.deltaTime;
