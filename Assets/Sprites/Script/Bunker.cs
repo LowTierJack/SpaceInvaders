@@ -30,7 +30,7 @@ public class Bunker : MonoBehaviour
             
             spRend.color = newColor;
             
-            if (nrOfHits == 4)
+            if (nrOfHits == 10)
             {
                 gameObject.SetActive(false);
             }

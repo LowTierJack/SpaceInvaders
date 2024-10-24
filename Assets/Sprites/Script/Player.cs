@@ -19,10 +19,14 @@ public class Player : MonoBehaviour
     float coolDownTime;
     [SerializeField] float coolDownAmount;
     public CameraShake cameraShake;
+    private LineRenderer lr;
+    private GameObject shootPoint;
 
     private void Start()
     {
-
+        lr = GetComponent<LineRenderer>();
+        shootPoint = transform.GetChild(0).gameObject;
+        lr.positionCount = 2;
         
 
         GameObject mgr = GameObject.FindWithTag("Manager");
@@ -37,7 +41,8 @@ public class Player : MonoBehaviour
     {
         Vector3 position = transform.position;
         ParticleSystem ps = GetComponent<ParticleSystem>();
-
+        lr.SetPosition(0, shootPoint.transform.position);
+        lr.SetPosition(1, shootPoint.transform.position + new Vector3(0, 30, 0));
         if (Input.GetKey(KeyCode.A))
         {
             position.x -= speed * Time.deltaTime;
@@ -70,12 +75,10 @@ public class Player : MonoBehaviour
             var emitParams = new ParticleSystem.EmitParams();
             emitParams.applyShapeToPosition = true;
             emitParams.position = transform.position + new Vector3(0, 15, 0);
-
-
             system.Emit(emitParams, 1);
 
             StartCoroutine(ShootLaser());
-            StartCoroutine(cameraShake.Shake(0.30f, 0.8f));
+            StartCoroutine(cameraShake.Shake(0.30f, 1f));
         }
     }
 
@@ -89,10 +92,11 @@ public class Player : MonoBehaviour
         {
             if (hit.collider != null)
             {
-                Explode.Play();
+
                 _freezer.Freeza();
                 GameManager.Instance.OnInvaderKilled(hit.transform);
                 yield return new WaitForSeconds(0.02f);
+                Explode.Play();
             }
         }
     }
