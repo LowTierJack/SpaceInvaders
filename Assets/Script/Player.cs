@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     Laser laser;
     float speed = 5f;
     Freeze _freezer;
+    public AudioSource Bang;
+    public AudioSource Explode;
     public ParticleSystem system;
     [SerializeField] ParticleSystem gunEffect;
     float coolDownTime;
@@ -20,6 +22,8 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+
+        
 
         GameObject mgr = GameObject.FindWithTag("Manager");
         if (mgr)
@@ -55,6 +59,7 @@ public class Player : MonoBehaviour
 
             coolDownTime = coolDownAmount;
             Vector2 playerPos = transform.position;
+            Bang.Play();
 
             var emitParamsGun = new ParticleSystem.EmitParams();
             emitParamsGun.applyShapeToPosition = true;
@@ -85,6 +90,7 @@ public class Player : MonoBehaviour
         {
             if (hit.collider != null)
             {
+                Explode.Play();
                 _freezer.Freeza();
                 GameManager.Instance.OnInvaderKilled(hit.transform);
                 yield return new WaitForSeconds(0.02f);
