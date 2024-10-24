@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
     public Invaders invaders;
     private MysteryShip mysteryShip;
     private Bunker[] bunkers;
-    public CameraShake cameraShake;
     [SerializeField] ParticleSystem john_Doe;
 
     //Används ej just nu, men ni kan använda de senare
@@ -56,10 +55,6 @@ public class GameManager : MonoBehaviour
             NewGame();
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            StartCoroutine(cameraShake.Shake(0.15f, 0.5f));
-        }
     }
 
     private void NewGame()
