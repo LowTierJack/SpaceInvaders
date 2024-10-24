@@ -74,12 +74,10 @@ public class Player : MonoBehaviour
             var emitParams = new ParticleSystem.EmitParams();
             emitParams.applyShapeToPosition = true;
             emitParams.position = transform.position + new Vector3(0, 15, 0);
-
-
             system.Emit(emitParams, 1);
 
             StartCoroutine(ShootLaser());
-            StartCoroutine(cameraShake.Shake(0.30f, 0.8f));
+            StartCoroutine(cameraShake.Shake(0.30f, 1f));
         }
     }
 
@@ -93,10 +91,11 @@ public class Player : MonoBehaviour
         {
             if (hit.collider != null)
             {
-                Explode.Play();
+
                 _freezer.Freeza();
                 GameManager.Instance.OnInvaderKilled(hit.transform);
                 yield return new WaitForSeconds(0.02f);
+                Explode.Play();
             }
         }
     }
